@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calendar</title>
+        <link rel="stylesheet" type="text/css" href="/css/calendar.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    </head>
+    <body>
+        <div class="page">
+            <span class="menu_toggle">
+                <i class="menu-open fa fa-bars fa-lg"></i>
+                <i class="menu-close fa fa-times fa-lg"></i>
+            </span>
+            <ul class="menu-items">
+                <li>
+                    <a href="/"><i class="fa fa-bars fa-2x"></i>Home</a>
+                </li>
+                <li>
+                    <a href=""><i class="fa fa-rocket fa-2x"></i>Calendar</a>
+                </li>
+                <li>
+                    <a href=""><i class="fa fa-phone fa-2x"></i>Employees</a>
+                </li>
+            </ul>
+            <main class="content">
+                <div class="content_inner">
+                    <h1>Digital Infinity</h1>
+                    <p>Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum
+                        Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum
+                        Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum
+                        Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum
+                        Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum
+                        Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum
+                        Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum
+                        Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum
+                        Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum
+                        Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum
+                        Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum
+                        Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum
+                        Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum,Lorem ipsum
+                    </p>
+                </div>
+            </main>
+        </div>
+        <script>
+            var $page = $('.page');
+                $('.menu_toggle').click(function(){
+                    $page.toggleClass('real');
+                });
+                $('.content').click(function(){
+                    $page.removeClass('real');
+                });
+        </script>
+    </body>
+</html>

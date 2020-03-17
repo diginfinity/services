@@ -3,48 +3,54 @@ const ConferenceRoom = require('../models/ConferenceRoom')
 const Time = require('../models/Time')
 
 const router = express.Router();
+const nodemailer = require("nodemailer");
+const hbs = require('nodemailer-express-handlebars')
 
-router.get('/test', async (req,res) => {
-    // let month = 2;
-    // const r = await Time.find({},(err, response) =>{
-    //     // response[0].years[0].month.value[0].value[0].hour = 1011;
-    //     // response[0].save()
-    //     res.json(response[0].years[0].month.value[0].value[0].hour)
-    // })
-    // res.json('success')
-    // console.log(r)
-    // const r = await Time.find({months: })
-    // r.months[0].Jan[0] = "burek"
-    // r[0].months[0].Jan[0] 
-    // res.json(r)
+// let user = {
+//     name: 'mare',
+//     email: 'mare@test.com'
+// }
 
-    // ovo radi ! ! !
-//    const q = await Time.updateMany({},{$set:{"years.0.month.value.0.value.0.hour": 1000}})
-    // res.json(r)
-    let today = new Date(1583767682328)
-    let lastDay = new Date(1591712968933)
-    let l = lastDay.toISOString()
-    let n = today.toISOString()
-
-    let i = 2;
-    Time.find({}, (err, result) => {
-    while (i <= 5) {
-        result[0].years.forEach(month => {
-            result[0].years[i].month.value.forEach(day => {
-                result[0].years[month].month.value[day].value.forEach(item => {
-                    
-                test.forEach(h => {
-                    if(h === item.hour) {
-                        // Time.updateMany({},{$set:{"years[0].month.value[month].value[day]": 1001}})
-                        result[0].years[month].month.value[day].value[h].hour = 1001
-                    }
-                }) 
-            })
-        })
-    }) 
-        i++
-    }
-})
+router.post('/test', async (req,res) => {
+    let transporter = nodemailer.createTransport({
+        host: "smtp.mailtrap.io",
+        port: 587,
+        secure: false, // true for 465, false for other ports
+        auth: {
+            user: 'dcde4be7e8cd65',
+            pass: '3221c056f7af02'
+        }
+      });
+      transporter.use('compile',hbs({
+        viewEngine: {
+            extName: '.hbs',
+            partialsDir: 'views/email',
+            layoutsDir: 'views/email',
+            defaultLayout: 'mail.hbs',
+        },
+        viewPath: 'views/email',
+        extName: '.hbs'
+      }))
+    
+      // send mail with defined transport object
+      let info = await transporter.sendMail({
+        from: '"Digital Infinity" <office@digitalinfinity.rs>', // sender address
+        to: user.email, // list of receivers
+        subject: "Hello ✔", // Subject linesss
+        text: "Hello world?", // plain text body
+        template: "mail",// html body
+        context:{
+            year: new Date().getFullYear()
+        }
+      });
+    
+      console.log("Message sent: %s", info.messageId);
+      res.send('Email has been sent')
+      // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+    
+      // Preview only available when sending through an Ethereal account
+      console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+      // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 })
 
 router.post('/reserve', async (req, res) => {
@@ -83,24 +89,59 @@ router.post('/reserve', async (req, res) => {
                 }) 
             }) 
             result[0].save()
-        }/* else {
-            let i = reservation.date_from.getTime();
-            while (i <= reservation.date_to.getTime()) {
-                result[0].years[month].month.value[day].value.forEach(item => {
-                    test.forEach(h => {
-                        if(h === item.hour) {
-                            // Time.updateMany({},{$set:{"years[0].month.value[month].value[day]": 1001}})
-                            result[0].years[month].month.value[day].value[h].hour = 1001
-                        }
-                    }) 
+        }else {
+            let i = reservation.date_from.getMonth();
+            while (i <= reservation.date_to.getMonth() ) {
+                result[0].years[i].month.value.forEach(day => {
+                    day.value.forEach(item => {
+                        test.forEach(h => {
+                            if(h === item.hour) {
+                                item.hour = 1001
+                            }
+                        }) 
+                    })
                 }) 
                 i++
             }
-        } */
+            result[0].save()
+        }
     })
     const savedReservation = await reservation.save();
-    res.json(savedReservation)
+
+    let transporter = nodemailer.createTransport({
+        host: "smtp.mailtrap.io",
+        port: 587,
+        secure: false, // true for 465, false for other ports
+        auth: {
+            user: 'dcde4be7e8cd65',
+            pass: '3221c056f7af02'
+        }
+      });
+      transporter.use('compile',hbs({
+        viewEngine: {
+            extName: '.hbs',
+            partialsDir: 'views/email',
+            layoutsDir: 'views/email',
+            defaultLayout: 'mail.hbs',
+        },
+        viewPath: 'views/email',
+        extName: '.hbs'
+      }))
     
+      let info = await transporter.sendMail({
+        from: '"Digital Infinity" <office@digitalinfinity.rs>', 
+        to: savedReservation.contact.email,
+        subject: "Rezervacija prostora",
+        text: "Dobrodosli", 
+        template: "mail",
+        context:{
+            year: new Date().getFullYear(),
+            date: savedReservation.date_from
+        }
+      });
+    
+    //   res.send('Reservation is completed, visit your mail for more details')    
+    res.send(savedReservation)
     // const time = await Time.find({}, (err, result) => {
     // res.json(result[0].years[month].month.value[day].value[hour])
     // })

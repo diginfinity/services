@@ -50,7 +50,7 @@ const upload = multer({ storage })
 
 router.post('/uploadImage', upload.single('file'), (req, res) => {
     const image = req.file.filename
-    Employee.findByIdAndUpdate(req.query.id, imageId = image, (err,employee) => {
+    Employee.findByIdAndUpdate(req.query.id, {imageId: image}, (err,employee) => {
         res.json(employee)
     })
 })

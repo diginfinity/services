@@ -48,4 +48,7 @@ app.get("/api/v1/image/:filename", (req, res) => {
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname+'/index.html'));
 })
+app.get('/calendar', (req,res) => {
+    res.sendFile(path.join(__dirname+'/calendar.html'));
+})
 app.listen(8000);
