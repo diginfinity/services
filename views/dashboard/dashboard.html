@@ -8,7 +8,7 @@
     <title>Dashboard</title>
   </head>
   <body>
-    <div class="container">
+    <div id="employee-form-container" class="container">
       <div class="wrapper">
         <form autocomplete="off" id="employeeForm" class="employee-form">
           <span class="employee-form-title">
@@ -49,7 +49,6 @@
 
           <div class="employee-input-wrapper">
             <input
-              required
               class="employee-input"
               id="linkedIn"
               type="text"
@@ -73,6 +72,24 @@
           </div>
         </form>
       </div>
+    </div>
+
+    <!-- image upload form -->
+    <div id="image-form-container" class="container">
+      <form id="image-upload-form" method="post" enctype="multipart/form-data">
+        <span class="employee-form-title">
+          Image Upload
+        </span>
+        <input type="file" name="file" />
+        <div class="container-employee-form-btn">
+          <div class="wrapper-employee-form-btn">
+            <div class="employee-form-bgbtn"></div>
+            <button type="submit" class="employee-form-btn">
+              Upload
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
   </body>
 </html>

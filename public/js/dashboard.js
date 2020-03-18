@@ -1,7 +1,9 @@
-const addEmployeeURL = 'http://localhost:8000/api/v1/employees/addEmployee';
-
 document.addEventListener('DOMContentLoaded', function() {
-  let employeeForm = document.getElementById('employeeForm');
+  const addEmployeeURL = 'http://localhost:8000/api/v1/employees/addEmployee';
+  const employeeForm = document.getElementById('employeeForm');
+  const imageUploadForm = document.getElementById('image-upload-form');
+  let employeeId = '';
+
   employeeForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -21,6 +23,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
     fetch(addEmployeeURL, params)
       .then((data) => data.json())
-      .then((res) => console.log(res));
+      .then((res) => {
+        document.getElementById('employee-form-container').style.display =
+          'none';
+        document.getElementById('image-form-container').style.display = 'flex';
+        employeeId = res._id;
+      })
+      .catch((err) => console.error(err));
+  });
+
+  imageUploadForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const file = event.target.file.files[0];
+    const formData = new FormData();
+    formData.append('file', file);
+    fetch(`/api/v1/employees/uploadImage?id=${employeeId}`, {
+      method: 'POST',
+      body: formData
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        document.location.href = '/dashboard';
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   });
 });
