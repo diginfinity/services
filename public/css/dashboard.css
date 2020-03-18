@@ -209,3 +209,13 @@ button:hover {
   background-position: 0 -100%;
   color: #2590eb;
 }
+
+.container-file-form-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 40px;
+}

@@ -12,6 +12,12 @@ router.get('/all-employees', async (req, res) => {
   res.json(employees);
 });
 
+router.get('/:id', async (req, res) => {
+  const employee = await Employee.findById(req.params.id);
+
+  res.json(employee);
+});
+
 router.post('/addEmployee', (req, res) => {
   const employee = new Employee({
     name: req.body.name,

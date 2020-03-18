@@ -44,7 +44,8 @@ document.addEventListener('DOMContentLoaded', function() {
     })
       .then((response) => response.json())
       .then((data) => {
-        document.location.href = '/dashboard';
+        // TODO only temporary
+        document.location.href = '/api/v1/employees/' + employeeId;
       })
       .catch((error) => {
         console.error(error);
