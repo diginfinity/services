@@ -1,54 +1,55 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const addEmployeeURL = 'http://localhost:8000/api/v1/employees/addEmployee';
-  const employeeForm = document.getElementById('employeeForm');
-  const imageUploadForm = document.getElementById('image-upload-form');
-  let employeeId = '';
-
-  employeeForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const data = {
-      name: employeeForm.elements['name'].value,
-      position: employeeForm.elements['position'].value,
-      linkedIn: employeeForm.elements['linkedIn'].value
-    };
-
-    const params = {
-      headers: {
-        'content-type': 'application/json; charset=UTF-8'
-      },
-      method: 'POST',
-      body: JSON.stringify(data)
-    };
-
-    fetch(addEmployeeURL, params)
-      .then((data) => data.json())
-      .then((res) => {
-        document.getElementById('employee-form-container').style.display =
-          'none';
-        document.getElementById('image-form-container').style.display = 'flex';
-        employeeId = res._id;
-      })
-      .catch((err) => console.error(err));
-  });
-
-  imageUploadForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    const file = event.target.file.files[0];
-    const formData = new FormData();
-    formData.append('file', file);
-    fetch(`/api/v1/employees/uploadImage?id=${employeeId}`, {
-      method: 'POST',
-      body: formData
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // TODO only temporary
-        document.location.href = '/api/v1/employees/' + employeeId;
-      })
-      .catch((error) => {
-        console.error(error);
+  fetch('http://localhost:8000/api/v1/employees/all-employees')
+    .then((data) => data.json())
+    .then((res) => {
+      res.forEach((employee) => {
+        document
+          .getElementById('employee-table-body')
+          .appendChild(createTableRow(employee));
       });
-  });
+    })
+    .catch((err) => console.error(err));
+
+  const createTableRow = (employee) => {
+    const tr = document.createElement('tr');
+    const td1 = document.createElement('td');
+    td1.setAttribute('class', `column1`);
+    const td1Txt = document.createTextNode(employee.name);
+    td1.appendChild(td1Txt);
+
+    const td2 = document.createElement('td');
+    td2.setAttribute('class', `column2`);
+    const td2Txt = document.createTextNode(employee.position);
+    td2.appendChild(td2Txt);
+
+    const td3 = document.createElement('td');
+    td3.setAttribute('class', `column3`);
+    const td3Txt = document.createTextNode(employee.linkedIn);
+    td3.appendChild(td3Txt);
+
+    const td4 = document.createElement('td');
+    td4.setAttribute('class', `column4`);
+    if (employee.imageId) {
+      const img = document.createElement('img');
+      img.setAttribute('src', `/api/v1/image/${employee.imageId}`);
+      img.setAttribute('alt', 'Image');
+      img.setAttribute('class', 'employee-image');
+      td4.appendChild(img);
+    }
+
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+    tr.appendChild(td3);
+    tr.appendChild(td4);
+
+    tr.addEventListener(
+      'click',
+      () => {
+        window.location = `edit-employee/${employee._id}`;
+      },
+      false
+    );
+
+    return tr;
+  };
 });
