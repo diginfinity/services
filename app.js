@@ -54,13 +54,16 @@ app.get('/', (req, res) => {
 app.get('/calendar', (req, res) => {
   res.sendFile(path.join(__dirname + '/calendar.html'));
 });
+app.get('/dashboard', (req, res) => {
+  res.sendFile(path.join(__dirname + '/views/dashboard.html'));
+});
 app.get('/add-employee', (req, res) => {
   res.sendFile(path.join(__dirname + '/views/add_employee.html'));
 });
 app.get('/edit-employee/:id', (req, res) => {
   res.sendFile(path.join(__dirname + '/views/edit_employee.html'));
 });
-app.get('/dashboard', (req, res) => {
-  res.sendFile(path.join(__dirname + '/views/dashboard.html'));
+app.get('/add-position', (req, res) => {
+  res.sendFile(path.join(__dirname + '/views/add_position.html'));
 });
 app.listen(8000);
