@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
         img.setAttribute('alt', 'Image');
         img.setAttribute('class', 'employee-image');
         document.getElementById('image-div').appendChild(img);
-        console.log(img);
       }
     })
     .catch((err) => console.error(err));
@@ -56,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
     fetch(`${employeeURL}/${employeeId}`, params)
       .then((data) => data.json())
       .then(() => {
-        window.location = '/dashboard';
+        window.location = '/employees';
       })
       .catch((err) => console.error(err));
   });

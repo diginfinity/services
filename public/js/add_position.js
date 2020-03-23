@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     fetch(addPositionURL, params)
       .then((data) => data.json())
       .then((res) => {
-        console.log(res);
+        window.location = '/job-positions';
       })
       .catch((err) => console.error(err));
   });

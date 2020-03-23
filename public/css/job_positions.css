@@ -79,12 +79,6 @@ iframe {
   border: none !important;
 }
 
-/*//////////////////////////////////////////////////////////////////
-  [ Utiliti ]*/
-
-/*//////////////////////////////////////////////////////////////////
-  [ Table ]*/
-
 .limiter {
   width: 100%;
   margin: 0 auto;
@@ -93,11 +87,10 @@ iframe {
 .container-table100 {
   width: 100%;
   min-height: 100vh;
-  background: #c850c0;
-  background: -webkit-linear-gradient(45deg, #4158d0, #c850c0);
-  background: -o-linear-gradient(45deg, #4158d0, #c850c0);
-  background: -moz-linear-gradient(45deg, #4158d0, #c850c0);
-  background: linear-gradient(45deg, #4158d0, #c850c0);
+  background: -webkit-linear-gradient(45deg, #614385, #516395);
+  background: -o-linear-gradient(45deg, #614385, #516395);
+  background: -moz-linear-gradient(45deg, #614385, #516395);
+  background: linear-gradient(45deg, #614385, #516395);
 
   display: -webkit-box;
   display: -webkit-flex;
@@ -111,7 +104,7 @@ iframe {
 }
 
 .wrap-table100 {
-  width: 1170px;
+  width: 1400px;
 }
 
 table {
@@ -129,6 +122,7 @@ table * {
 }
 table td,
 table th {
+  padding: 10px 0;
   padding-left: 8px;
 }
 table thead tr {
@@ -186,20 +180,23 @@ tbody tr:hover {
 
 .column1 {
   width: 240px;
-  padding-left: 40px;
+  padding-left: 30px;
 }
 
 .column2 {
-  width: 160px;
+  width: 140px;
 }
 
 .column3 {
-  width: 225px;
+  width: 205px;
 }
 
 .column4 {
   width: 135px;
-  text-align: center;
+}
+
+.column5 {
+  width: 265px;
 }
 
 @media screen and (max-width: 768px) {
@@ -214,6 +211,11 @@ tbody tr:hover {
   }
   table thead {
     display: none;
+  }
+  table td,
+  table th {
+    padding: 0;
+    padding-left: 8px;
   }
   table tbody tr {
     height: auto;
@@ -238,26 +240,26 @@ tbody tr:hover {
     top: 0;
   }
   table tbody tr td:nth-child(1):before {
-    content: 'Employee';
+    content: 'Title';
   }
   table tbody tr td:nth-child(2):before {
-    content: 'Position';
+    content: 'Title Short';
   }
   table tbody tr td:nth-child(3):before {
-    content: 'LinkedIn';
+    content: 'Type';
   }
   table tbody tr td:nth-child(4):before {
-    content: 'Image';
+    content: 'Hours';
+  }
+  table tbody tr td:nth-child(5):before {
+    content: 'Description';
   }
 
-  .column4 {
-    text-align: left;
-  }
-
-  .column4,
   .column1,
   .column2,
-  .column3 {
+  .column3,
+  .column4,
+  .column5 {
     width: 100%;
   }
 
@@ -273,14 +275,6 @@ tbody tr:hover {
   }
 }
 
-.employee-image {
-  height: 72px;
-  width: 72px;
-  border-radius: 50%;
-  padding: 8px;
-  object-fit: cover;
-}
-
 .add-employee-button {
   color: #494949 !important;
   text-decoration: none;
@@ -292,12 +286,12 @@ tbody tr:hover {
   margin-bottom: 10px;
 }
 
-.add-employee-button-container {
+.add-position-button-container {
   width: 100%;
   text-align: center;
 }
 
-.employee-button {
+.position-button {
   text-decoration: none;
   padding: 20px;
   display: inline-block;

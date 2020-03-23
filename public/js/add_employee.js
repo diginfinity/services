@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
       })
         .then((response) => response.json())
         .then((data) => {
-          window.location = '/dashboard';
+          window.location = '/employees';
         })
         .catch((error) => {
           console.error(error);
