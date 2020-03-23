@@ -35,20 +35,21 @@ document.addEventListener('DOMContentLoaded', function() {
   imageUploadForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    const file = event.target.file.files[0];
-    const formData = new FormData();
-    formData.append('file', file);
-    fetch(`/api/v1/employees/uploadImage?id=${employeeId}`, {
-      method: 'POST',
-      body: formData
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // TODO only temporary
-        document.location.href = '/api/v1/employees/' + employeeId;
+    if (event.target.file.files.length === 1) {
+      const file = event.target.file.files[0];
+      const formData = new FormData();
+      formData.append('file', file);
+      fetch(`/api/v1/employees/uploadImage?id=${employeeId}`, {
+        method: 'POST',
+        body: formData
       })
-      .catch((error) => {
-        console.error(error);
-      });
+        .then((response) => response.json())
+        .then((data) => {
+          window.location = '/dashboard';
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
   });
 });

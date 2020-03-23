@@ -18,6 +18,21 @@ router.get('/:id', async (req, res) => {
   res.json(employee);
 });
 
+router.put('/:id', (req, res) => {
+  var employee = req.body;
+
+  Employee.findByIdAndUpdate(req.params.id, { $set: employee }, async function(
+    err,
+    result
+  ) {
+    if (err) {
+      console.log(err);
+    }
+    const response = await Employee.findById(req.params.id);
+    res.send(response);
+  });
+});
+
 router.post('/addEmployee', (req, res) => {
   const employee = new Employee({
     name: req.body.name,
