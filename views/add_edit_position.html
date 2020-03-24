@@ -3,16 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="js/add_position.js"></script>
-    <link rel="shortcut icon" type="image/png" href="favicon.png" />
-    <link rel="stylesheet" href="css/add_position.css" />
+    <script src="../js/add_edit_position.js"></script>
+    <link rel="shortcut icon" type="image/png" href="di.png" />
+    <link rel="stylesheet" href="../css/add_edit_position.css" />
+    <link rel="stylesheet" href="../css/header.css" />
     <title>Add Job Position</title>
   </head>
   <body>
+    <div id="header-div"></div>
     <div class="container">
       <div class="wrapper">
         <form autocomplete="off" id="jobPositionForm" class="position-form">
-          <span class="position-form-title">
+          <span id="position-header" class="position-form-title">
             Add New Job Position
           </span>
 
@@ -28,7 +30,11 @@
               onblur="this.placeholder = 'Title'"
             />
             <label class="position-input-label" for="title">
-              <img height="22px" src="fonts/icons/briefcase-solid.svg" alt="" />
+              <img
+                height="22px"
+                src="../fonts/icons/briefcase-solid.svg"
+                alt=""
+              />
             </label>
           </div>
 
@@ -43,7 +49,11 @@
               onblur="this.placeholder = 'Short Title'"
             />
             <label class="position-input-label" for="short">
-              <img height="22px" src="fonts/icons/briefcase-solid.svg" alt="" />
+              <img
+                height="22px"
+                src="../fonts/icons/briefcase-solid.svg"
+                alt=""
+              />
             </label>
           </div>
 
@@ -59,7 +69,7 @@
               onblur="this.placeholder = 'Type'"
             />
             <label class="position-input-label" for="type">
-              <img height="22px" src="fonts/icons/laptop-code.svg" alt="" />
+              <img height="22px" src="../fonts/icons/laptop-code.svg" alt="" />
             </label>
           </div>
 
@@ -75,7 +85,11 @@
               onblur="this.placeholder = 'Working Hours'"
             />
             <label class="position-input-label" for="hours">
-              <img height="22px" src="fonts/icons/business-time.svg" alt="" />
+              <img
+                height="22px"
+                src="../fonts/icons/business-time.svg"
+                alt=""
+              />
             </label>
           </div>
 
@@ -90,14 +104,18 @@
               onblur="this.placeholder = 'Description'"
             />
             <label class="position-input-label" for="description">
-              <img height="22px" src="fonts/icons/info-circle.svg" alt="" />
+              <img height="22px" src="../fonts/icons/info-circle.svg" alt="" />
             </label>
           </div>
 
           <div class="container-position-form-btn">
             <div class="wrapper-position-form-btn">
               <div class="position-form-bgbtn"></div>
-              <button type="submit" class="position-form-btn">
+              <button
+                id="position-button"
+                type="submit"
+                class="position-form-btn"
+              >
                 Add Job Position
               </button>
             </div>

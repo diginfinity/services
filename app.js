@@ -67,6 +67,9 @@ app.get('/job-positions', (req, res) => {
   res.sendFile(path.join(__dirname + '/views/job_positions.html'));
 });
 app.get('/add-position', (req, res) => {
-  res.sendFile(path.join(__dirname + '/views/add_position.html'));
+  res.sendFile(path.join(__dirname + '/views/add_edit_position.html'));
+});
+app.get('/edit-position/:id', (req, res) => {
+  res.sendFile(path.join(__dirname + '/views/add_edit_position.html'));
 });
 app.listen(8000);

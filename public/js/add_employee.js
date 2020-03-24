@@ -4,6 +4,16 @@ document.addEventListener('DOMContentLoaded', function() {
   const imageUploadForm = document.getElementById('image-upload-form');
   let employeeId = '';
 
+  fetch('../header.html')
+    .then((response) => {
+      return response.text();
+    })
+    .then((data) => {
+      document.getElementById('header-div').innerHTML = data;
+      document.getElementById('positions-link').classList.remove('selected');
+      document.getElementById('employees-link').classList.remove('selected');
+    });
+
   employeeForm.addEventListener('submit', (e) => {
     e.preventDefault();
 

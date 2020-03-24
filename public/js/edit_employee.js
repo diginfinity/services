@@ -5,6 +5,16 @@ document.addEventListener('DOMContentLoaded', function() {
     location.pathname.split('/').length - 1
   ];
 
+  fetch('../header.html')
+    .then((response) => {
+      return response.text();
+    })
+    .then((data) => {
+      document.getElementById('header-div').innerHTML = data;
+      document.getElementById('positions-link').classList.remove('selected');
+      document.getElementById('employees-link').classList.remove('selected');
+    });
+
   fetch(`${employeeURL}/${employeeId}`)
     .then((data) => data.json())
     .then((employee) => {

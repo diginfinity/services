@@ -37,7 +37,7 @@ button:hover {
 
 .container {
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 80px);
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;

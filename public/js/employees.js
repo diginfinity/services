@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
+  fetch('../header.html')
+    .then((response) => {
+      return response.text();
+    })
+    .then((data) => {
+      document.getElementById('header-div').innerHTML = data;
+      document.getElementById('positions-link').classList.remove('selected');
+      document.getElementById('employees-link').classList.add('selected');
+    });
+
   fetch('http://localhost:8000/api/v1/employees/all-employees')
     .then((data) => data.json())
     .then((res) => {
