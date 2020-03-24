@@ -120,6 +120,7 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   padding-top: 13px;
+  justify-content: space-between;
 }
 
 .wrapper-position-form-btn {
@@ -130,7 +131,7 @@ button:hover {
   overflow: hidden;
 }
 
-.position-form-bgbtn {
+.delete-position-form-bgbtn {
   position: absolute;
   z-index: -1;
   width: 300%;
@@ -146,6 +147,31 @@ button:hover {
   background: -o-linear-gradient(-135deg, #d5007d, #e53935, #d5007d, #e53935);
   background: -moz-linear-gradient(-135deg, #d5007d, #e53935, #d5007d, #e53935);
   background: linear-gradient(-135deg, #d5007d, #e53935, #d5007d, #e53935);
+  top: 0;
+  left: -100%;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.position-form-bgbtn {
+  position: absolute;
+  z-index: -1;
+  width: 300%;
+  height: 100%;
+  background: #df2351;
+  background: -webkit-linear-gradient(
+    -135deg,
+    #614385,
+    #516395,
+    #614385,
+    #516395
+  );
+  background: -o-linear-gradient(-135deg, #614385, #516395, #614385, #516395);
+  background: -moz-linear-gradient(-135deg, #614385, #516395, #614385, #516395);
+  background: linear-gradient(-135deg, #614385, #516395, #614385, #516395);
   top: 0;
   left: -100%;
 
@@ -174,6 +200,10 @@ button:hover {
 }
 
 .wrapper-position-form-btn:hover .position-form-bgbtn {
+  left: 0;
+}
+
+.wrapper-position-form-btn:hover .delete-position-form-bgbtn {
   left: 0;
 }
 

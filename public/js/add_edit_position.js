@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   };
 
-  const createRequestParams = (httpMethod) => {
+  const createRequestParams = (httpMethod, needBody) => {
     const data = {
       title: jobPositionForm.elements['title'].value,
       short: jobPositionForm.elements['short'].value,
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'content-type': 'application/json; charset=UTF-8'
       },
       method: httpMethod,
-      body: JSON.stringify(data)
+      body: needBody ? JSON.stringify(data) : undefined
     };
   };
 
@@ -47,44 +47,59 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('position-button').textContent = 'Save';
   };
 
+  const sendRequest = (URL, params, callback) => {
+    fetch(URL, params)
+      .then((data) => data.json())
+      .then((res) => {
+        callback(res);
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const onDeleteClick = (jobPositionId) => {
+    sendRequest(
+      `${jobPositionURL}/${jobPositionId}`,
+      createRequestParams('DELETE', false),
+      () => (window.location = '/job-positions')
+    );
+  };
+
   // --------------------- initalization
 
   fetchHeader();
 
   if (!isEdit) {
+    document.getElementById('delete-position-button').style.display = 'none';
     jobPositionForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const params = createRequestParams('POST');
-
-      fetch(`${jobPositionURL}/open-job-position`, params)
-        .then((data) => data.json())
-        .then((res) => {
-          window.location = '/job-positions';
-        })
-        .catch((err) => console.error(err));
+      sendRequest(
+        `${jobPositionURL}/open-job-position`,
+        createRequestParams('POST', true),
+        () => (window.location = '/job-positions')
+      );
     });
   } else if (isEdit) {
     const jobPositionId = location.pathname.split('/')[2];
 
-    fetch(`${jobPositionURL}/${jobPositionId}`)
-      .then((data) => data.json())
-      .then((position) => {
-        populateFormAndText(position);
-      })
-      .catch((err) => console.error(err));
+    document
+      .getElementById('delete-position-button')
+      .addEventListener('click', () => onDeleteClick(jobPositionId), false);
+
+    sendRequest(
+      `${jobPositionURL}/${jobPositionId}`,
+      undefined,
+      populateFormAndText
+    );
 
     jobPositionForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const params = createRequestParams('PUT');
-
-      fetch(`${jobPositionURL}/${jobPositionId}`, params)
-        .then((data) => data.json())
-        .then(() => {
-          window.location = '/job-positions';
-        })
-        .catch((err) => console.error(err));
+      sendRequest(
+        `${jobPositionURL}/${jobPositionId}`,
+        createRequestParams('PUT', true),
+        () => (window.location = '/job-positions')
+      );
     });
   }
 });

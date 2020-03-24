@@ -29,6 +29,13 @@ router.put('/:id', (req, res) => {
   });
 });
 
+router.delete('/:id', async (req, res) => {
+  Job.findByIdAndRemove(req.params.id, function(err) {
+    if (err) res.send(err);
+    else res.json({ message: 'Job Position deleted!' });
+  });
+});
+
 router.post('/open-job-position', async (req, res) => {
   const { title, short, type, workingHours, description } = req.body;
   const job = new Job({
