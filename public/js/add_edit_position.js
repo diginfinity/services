@@ -6,18 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // ------------------------ helper functions
 
-  const fetchHeader = () => {
-    fetch('../header.html')
-      .then((response) => {
-        return response.text();
-      })
-      .then((data) => {
-        document.getElementById('header-div').innerHTML = data;
-        document.getElementById('positions-link').classList.remove('selected');
-        document.getElementById('employees-link').classList.remove('selected');
-      });
-  };
-
   const createRequestParams = (httpMethod, needBody) => {
     const data = {
       title: jobPositionForm.elements['title'].value,
@@ -45,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('position-header').textContent =
       'Edit Job Position';
     document.getElementById('position-button').textContent = 'Save';
+    document.title = 'Edit Job Position';
   };
 
   const sendRequest = (URL, params, callback) => {
@@ -65,8 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 
   // --------------------- initalization
-
-  fetchHeader();
 
   if (!isEdit) {
     document.getElementById('delete-position-button').style.display = 'none';

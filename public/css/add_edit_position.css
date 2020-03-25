@@ -129,6 +129,7 @@ button:hover {
   z-index: 1;
   border-radius: 31px;
   overflow: hidden;
+  margin-bottom: 15px;
 }
 
 .delete-position-form-bgbtn {
@@ -161,7 +162,7 @@ button:hover {
   z-index: -1;
   width: 300%;
   height: 100%;
-  background: #df2351;
+  background: #614385;
   background: -webkit-linear-gradient(
     -135deg,
     #614385,

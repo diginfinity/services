@@ -4,15 +4,18 @@ document.addEventListener('DOMContentLoaded', function() {
   const imageUploadForm = document.getElementById('image-upload-form');
   let employeeId = '';
 
-  fetch('../header.html')
-    .then((response) => {
-      return response.text();
-    })
-    .then((data) => {
-      document.getElementById('header-div').innerHTML = data;
-      document.getElementById('positions-link').classList.remove('selected');
-      document.getElementById('employees-link').classList.remove('selected');
-    });
+  // helper functions
+
+  const sendRequest = (URL, params, callback) => {
+    fetch(URL, params)
+      .then((data) => data.json())
+      .then((res) => {
+        callback(res);
+      })
+      .catch((err) => console.error(err));
+  };
+
+  // initialization
 
   employeeForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -31,15 +34,11 @@ document.addEventListener('DOMContentLoaded', function() {
       body: JSON.stringify(data)
     };
 
-    fetch(addEmployeeURL, params)
-      .then((data) => data.json())
-      .then((res) => {
-        document.getElementById('employee-form-container').style.display =
-          'none';
-        document.getElementById('image-form-container').style.display = 'flex';
-        employeeId = res._id;
-      })
-      .catch((err) => console.error(err));
+    sendRequest(addEmployeeURL, params, (res) => {
+      document.getElementById('employee-form-container').style.display = 'none';
+      document.getElementById('image-form-container').style.display = 'flex';
+      employeeId = res._id;
+    });
   });
 
   imageUploadForm.addEventListener('submit', (event) => {
@@ -49,17 +48,15 @@ document.addEventListener('DOMContentLoaded', function() {
       const file = event.target.file.files[0];
       const formData = new FormData();
       formData.append('file', file);
-      fetch(`/api/v1/employees/uploadImage?id=${employeeId}`, {
-        method: 'POST',
-        body: formData
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          window.location = '/employees';
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+
+      sendRequest(
+        `/api/v1/employees/uploadImage?id=${employeeId}`,
+        {
+          method: 'POST',
+          body: formData
+        },
+        () => (window.location = '/employees')
+      );
     }
   });
 });

@@ -5,30 +5,50 @@ document.addEventListener('DOMContentLoaded', function() {
     location.pathname.split('/').length - 1
   ];
 
-  fetch('../header.html')
-    .then((response) => {
-      return response.text();
-    })
-    .then((data) => {
-      document.getElementById('header-div').innerHTML = data;
-      document.getElementById('positions-link').classList.remove('selected');
-      document.getElementById('employees-link').classList.remove('selected');
-    });
+  // helper functions
+  const sendRequest = (URL, params, callback) => {
+    fetch(URL, params)
+      .then((data) => data.json())
+      .then((res) => {
+        callback(res);
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const onDeleteClick = (employeeId) => {
+    const params = {
+      headers: {
+        'content-type': 'application/json; charset=UTF-8'
+      },
+      method: 'DELETE'
+    };
+    sendRequest(
+      `${employeeURL}/${employeeId}`,
+      params,
+      () => (window.location = '/employees')
+    );
+  };
+
+  const populateForm = (employee) => {
+    document.getElementById('name').value = employee.name;
+    document.getElementById('position').value = employee.position;
+    document.getElementById('linkedIn').value = employee.linkedIn;
+
+    if (employee.imageId) {
+      const img = document.createElement('img');
+      img.setAttribute('src', `/api/v1/image/${employee.imageId}`);
+      img.setAttribute('alt', 'Image');
+      img.setAttribute('class', 'employee-image');
+      document.getElementById('image-div').appendChild(img);
+    }
+  };
+
+  // initialization
 
   fetch(`${employeeURL}/${employeeId}`)
     .then((data) => data.json())
     .then((employee) => {
-      document.getElementById('name').value = employee.name;
-      document.getElementById('position').value = employee.position;
-      document.getElementById('linkedIn').value = employee.linkedIn;
-
-      if (employee.imageId) {
-        const img = document.createElement('img');
-        img.setAttribute('src', `/api/v1/image/${employee.imageId}`);
-        img.setAttribute('alt', 'Image');
-        img.setAttribute('class', 'employee-image');
-        document.getElementById('image-div').appendChild(img);
-      }
+      populateForm(employee);
     })
     .catch((err) => console.error(err));
 
@@ -54,19 +74,21 @@ document.addEventListener('DOMContentLoaded', function() {
       const file = files[0];
       const formData = new FormData();
       formData.append('file', file);
-      fetch(`/api/v1/employees/uploadImage?id=${employeeId}`, {
+
+      sendRequest(`/api/v1/employees/uploadImage?id=${employeeId}`, {
         method: 'POST',
         body: formData
-      }).catch((error) => {
-        console.error(error);
       });
     }
 
-    fetch(`${employeeURL}/${employeeId}`, params)
-      .then((data) => data.json())
-      .then(() => {
-        window.location = '/employees';
-      })
-      .catch((err) => console.error(err));
+    sendRequest(
+      `${employeeURL}/${employeeId}`,
+      params,
+      () => (window.location = '/employees')
+    );
   });
+
+  document
+    .getElementById('delete-employee-button')
+    .addEventListener('click', () => onDeleteClick(employeeId), false);
 });

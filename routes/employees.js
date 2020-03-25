@@ -33,6 +33,13 @@ router.put('/:id', (req, res) => {
   });
 });
 
+router.delete('/:id', async (req, res) => {
+  Employee.findByIdAndRemove(req.params.id, function(err) {
+    if (err) res.send(err);
+    else res.json({ message: 'Employee deleted!' });
+  });
+});
+
 router.post('/addEmployee', (req, res) => {
   const employee = new Employee({
     name: req.body.name,

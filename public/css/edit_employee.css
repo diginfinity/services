@@ -120,6 +120,7 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   padding-top: 13px;
+  justify-content: space-between;
 }
 
 .wrapper-employee-form-btn {
@@ -128,9 +129,10 @@ button:hover {
   z-index: 1;
   border-radius: 31px;
   overflow: hidden;
+  margin-bottom: 15px;
 }
 
-.employee-form-bgbtn {
+.delete-employee-form-bgbtn {
   position: absolute;
   z-index: -1;
   width: 300%;
@@ -146,6 +148,31 @@ button:hover {
   background: -o-linear-gradient(-135deg, #d5007d, #e53935, #d5007d, #e53935);
   background: -moz-linear-gradient(-135deg, #d5007d, #e53935, #d5007d, #e53935);
   background: linear-gradient(-135deg, #d5007d, #e53935, #d5007d, #e53935);
+  top: 0;
+  left: -100%;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.employee-form-bgbtn {
+  position: absolute;
+  z-index: -1;
+  width: 300%;
+  height: 100%;
+  background: #614385;
+  background: -webkit-linear-gradient(
+    -135deg,
+    #614385,
+    #516395,
+    #614385,
+    #516395
+  );
+  background: -o-linear-gradient(-135deg, #614385, #516395, #614385, #516395);
+  background: -moz-linear-gradient(-135deg, #614385, #516395, #614385, #516395);
+  background: linear-gradient(-135deg, #614385, #516395, #614385, #516395);
   top: 0;
   left: -100%;
 
@@ -174,6 +201,10 @@ button:hover {
 }
 
 .wrapper-employee-form-btn:hover .employee-form-bgbtn {
+  left: 0;
+}
+
+.wrapper-employee-form-btn:hover .delete-employee-form-bgbtn {
   left: 0;
 }
 
