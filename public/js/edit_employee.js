@@ -16,17 +16,24 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 
   const onDeleteClick = (employeeId) => {
-    const params = {
-      headers: {
-        'content-type': 'application/json; charset=UTF-8'
+    acModal.confirm({
+      title: 'Delete',
+      message: 'Are you sure you want to delete this employee?',
+      successCallBack: function() {
+        sendRequest(
+          `${employeeURL}/${employeeId}`,
+          {
+            headers: {
+              'content-type': 'application/json; charset=UTF-8'
+            },
+            method: 'DELETE'
+          },
+          () => (window.location = '/employees')
+        );
       },
-      method: 'DELETE'
-    };
-    sendRequest(
-      `${employeeURL}/${employeeId}`,
-      params,
-      () => (window.location = '/employees')
-    );
+      successText: 'OK',
+      cancelText: 'Cancel'
+    });
   };
 
   const populateForm = (employee) => {

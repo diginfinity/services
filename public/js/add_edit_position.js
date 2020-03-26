@@ -46,11 +46,19 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 
   const onDeleteClick = (jobPositionId) => {
-    sendRequest(
-      `${jobPositionURL}/${jobPositionId}`,
-      createRequestParams('DELETE', false),
-      () => (window.location = '/job-positions')
-    );
+    acModal.confirm({
+      title: 'Delete',
+      message: 'Are you sure you want to delete this job position?',
+      successCallBack: function() {
+        sendRequest(
+          `${jobPositionURL}/${jobPositionId}`,
+          createRequestParams('DELETE', false),
+          () => (window.location = '/job-positions')
+        );
+      },
+      successText: 'OK',
+      cancelText: 'Cancel'
+    });
   };
 
   // --------------------- initalization
