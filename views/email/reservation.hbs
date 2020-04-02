@@ -3,11 +3,14 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="http://fonts.googleapis.com/css?family=Lato"
+      rel="stylesheet"
+      type="text/css"
+    />
     <title>Digital Infinity rezervacioni email</title>
 
     <style type="text/css">
-      @import url(http://fonts.googleapis.com/css?family=Lato);
-
       * {
         font-family: lato;
         color: #17161a;
@@ -21,24 +24,32 @@
       a {
         color: #17161a;
       }
-
       .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
+        width: 530px;
         padding: 10px 0;
+      }
+      .logo {
+        display: inline-block;
+        width: 40%;
       }
 
       .logo h2 {
         margin: 0;
       }
-
       .logo-conference {
         color: #f47064;
       }
-
+      .header-link-div {
+        display: inline-block;
+        width: 50%;
+        text-align: end;
+        vertical-align: top;
+        float: right;
+      }
       .header-link {
         text-decoration: none;
+        font-size: 12px;
+        word-wrap: break-word;
       }
 
       .title {
@@ -63,24 +74,80 @@
         width: 530px;
         height: 200px;
         object-fit: cover;
-        margin: 15px 0;
+        margin: 20px 0;
       }
       .info-div {
         width: 530px;
         background-color: #f8f8f8;
       }
+      .info-div-2 {
+        width: 530px;
+        padding: 15px 0;
+      }
       .wrapper {
         padding: 10px 24px;
+      }
+      .footer {
+        width: 530px;
+        margin-top: 40px;
+      }
+      .footer-logo {
+        display: inline-block;
+        vertical-align: top;
+        width: 15%;
+        padding-right: 10px;
+      }
+      .company-info {
+        display: inline-block;
+        padding: 0 6px;
+        width: 77%;
+      }
+      .social {
+        display: inline-block;
+        width: 1%;
+      }
+      .info-section {
+        padding: 10px 0;
+      }
+      .info-header {
+        margin-top: 0 !important;
+      }
+      .social-text {
+        -ms-writing-mode: tb-rl;
+        -webkit-writing-mode: vertical-rl;
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        white-space: nowrap;
       }
     </style>
 
     <style type="text/css" media="only screen and (max-width: 576px)">
-      .reservation-img {
-        width: 100%;
-      }
-
-      .info-div {
-        width: 100%;
+      @media only screen and (max-width: 576px) {
+        .reservation-img {
+          width: 100%;
+        }
+        .info-div {
+          width: 100%;
+        }
+        .info-div-2 {
+          width: 100%;
+        }
+        .footer {
+          width: 100%;
+        }
+        .footer-logo {
+          width: 16%;
+        }
+        .company-info {
+          width: 74%;
+          padding-right: 0;
+        }
+        .social-text {
+          width: 1%;
+        }
+        .header {
+          width: 100%;
+        }
       }
     </style>
   </head>
@@ -95,7 +162,7 @@
           </span>
         </h2>
       </div>
-      <div>
+      <div class="header-link-div">
         <a class="header-link" href="#">OTVORITE E-MAIL U BROWSERU</a>
       </div>
     </div>
@@ -136,7 +203,11 @@
       </table>
     </div>
     <p class="bold">Hvala na rezervaciji!</p>
-    <img src="images/reservation.png" alt="reservation" class="reservation-img" />
+    <img
+      src="images/reservation.png"
+      alt="reservation"
+      class="reservation-img"
+    />
     <div class="info-div">
       <div class="wrapper">
         <p>
@@ -156,6 +227,48 @@
           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
           pariatur.
         </p>
+      </div>
+    </div>
+    <div class="info-div-2">
+      <span class="bold">
+        Želimo vam prijatnan i kvalitetan boravak u našim prostorima
+      </span>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur.
+      </p>
+    </div>
+    <div class="footer">
+      <div class="footer-logo">
+        <img src="images/di.png" alt="di" height="36px" width="36px" />
+        <br />
+        <span class="bold">digital<br />infinity.</span>
+      </div>
+      <div class="company-info">
+        <h4 class="info-header">Informacije o kompaniji</h4>
+        <div class="info-section">
+          <span class="bold">DIGITAL INFINITY DOO Novi Sad</span><br />
+          <span>Bulevar Kralja Petra I 89, 21000 Novi Sad</span>
+        </div>
+        <div class="info-section">
+          <span>PIB: 110217311</span><br />
+          <span>Matični broj: 21318507</span>
+        </div>
+        <div class="info-section">
+          <span>Tel: +381 21 300 2956</span><br />
+          <span>Email: office@digitalinfinity.rs</span>
+        </div>
+        <div class="info-section">
+          <span>digitalinfinity.rs</span>
+        </div>
+      </div>
+      <div class="social">
+        <span class="social-text bold"
+          >Prati nas - Fb. / In. / Tw. / Inst.</span
+        >
       </div>
     </div>
   </body>
