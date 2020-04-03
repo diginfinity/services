@@ -3,26 +3,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="http://fonts.googleapis.com/css?family=Lato"
-      rel="stylesheet"
-      type="text/css"
-    />
     <title>Digital Infinity rezervacioni email</title>
+    <link rel="shortcut icon" type="image/png" href="images/di.png" />
 
     <style type="text/css">
+      @import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+
       * {
-        font-family: lato;
         color: #17161a;
       }
-
       body {
         padding: 15px 20px;
       }
-
       h2,
       a {
         color: #17161a;
+      }
+      .center-container {
+        width: 530px;
+        margin: 0 auto;
       }
       .header {
         width: 530px;
@@ -32,9 +31,9 @@
         display: inline-block;
         width: 40%;
       }
-
       .logo h2 {
         margin: 0;
+        line-height: 24px;
       }
       .logo-conference {
         color: #f47064;
@@ -51,25 +50,20 @@
         font-size: 12px;
         word-wrap: break-word;
       }
-
       .title {
         padding: 12px 0;
       }
-
       .details-table {
         padding: 20px 0;
       }
-
       .details-table td {
         min-width: 110px;
         width: 200px;
-        padding: 8px 0;
+        padding: 6px 0;
       }
-
       .bold {
         font-weight: 700;
       }
-
       .reservation-img {
         width: 530px;
         height: 200px;
@@ -121,8 +115,20 @@
       }
     </style>
 
+    <style type="text/css" media="screen">
+      @media screen {
+        * {
+          font-family: "Lato", "Arial", "sans-serif" !important;
+        }
+      }
+    </style>
+
     <style type="text/css" media="only screen and (max-width: 576px)">
       @media only screen and (max-width: 576px) {
+        .center-container {
+          width: 100%;
+          margin: 0;
+        }
         .reservation-img {
           width: 100%;
         }
@@ -152,64 +158,88 @@
     </style>
   </head>
   <body>
-    <div class="header">
-      <div class="logo">
-        <h2>
-          digital <br />
-          infinity. <br />
-          <span class="logo-conference">
-            conference
-          </span>
-        </h2>
+    <div class="center-container">
+      <div class="header">
+        <div class="logo">
+          <h2>
+            digital <br />
+            infinity. <br />
+            <span class="logo-conference">
+              conference
+            </span>
+          </h2>
+        </div>
+        <div class="header-link-div">
+          <a class="header-link" href="#">OTVORITE E-MAIL U BROWSERU</a>
+        </div>
       </div>
-      <div class="header-link-div">
-        <a class="header-link" href="#">OTVORITE E-MAIL U BROWSERU</a>
+
+      <div class="title">
+        <h1>Vaša rezervacija je uspešna</h1>
+        <p>Uspešno ste rezervisali učionicu broj 3</p>
       </div>
-    </div>
 
-    <div class="title">
-      <h1>Vaša rezervacija je uspešna</h1>
-      <p>Uspešno ste rezervisali učionicu broj 3</p>
-    </div>
-
-    <div>
-      <table class="details-table">
-        <tbody>
-          <tr>
-            <td>Datum:</td>
-            <td class="bold">31.3.2020.</td>
-          </tr>
-          <tr>
-            <td>Vreme:</td>
-            <td class="bold">17:00 - 21:00</td>
-          </tr>
-          <tr>
-            <td>Sala/Učionica:</td>
-            <td class="bold">Učionica 3</td>
-          </tr>
-          <tr>
-            <td>Broj mesta:</td>
-            <td class="bold">20 / 40</td>
-          </tr>
-          <tr>
-            <td>Predavač/i:</td>
-            <td class="bold">Marko Marković, Pera Perić</td>
-          </tr>
-          <tr>
-            <td>Cena:</td>
-            <td class="bold">23 000,00 din</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="bold">Hvala na rezervaciji!</p>
-    <img
-      src="images/reservation.png"
-      alt="reservation"
-      class="reservation-img"
-    />
-    <div class="info-div">
-      <div class="wrapper">
+      <div>
+        <table class="details-table">
+          <tbody>
+            <tr>
+              <td>Datum:</td>
+              <td class="bold">31.3.2020.</td>
+            </tr>
+            <tr>
+              <td>Vreme:</td>
+              <td class="bold">17:00 - 21:00</td>
+            </tr>
+            <tr>
+              <td>Sala/Učionica:</td>
+              <td class="bold">Učionica 3</td>
+            </tr>
+            <tr>
+              <td>Broj mesta:</td>
+              <td class="bold">20 / 40</td>
+            </tr>
+            <tr>
+              <td>Predavač/i:</td>
+              <td class="bold">Marko Marković, Pera Perić</td>
+            </tr>
+            <tr>
+              <td>Cena:</td>
+              <td class="bold">23 000,00 din</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="bold">Hvala na rezervaciji!</p>
+      <img
+        src="https://cdn.filestackcontent.com/cache=false/output=secure:true/security=policy:eyJleHBpcnkiOiAxNTg1OTE2NDgzLCAiY2FsbCI6IFsicmVhZCIsICJzdGF0IiwgImNvbnZlcnQiLCAicGljayIsICJzdG9yZSJdfQ==,signature:a394f586db6c3c24b74300fe051077c4aa6000543f23c7f08ab7de438504a61a/BDVBaZ7mSEybWjNHBwz7"
+        alt="reservation"
+        class="reservation-img"
+      />
+      <div class="info-div">
+        <div class="wrapper">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur.
+          </p>
+          <span class="bold">Otkazivanje prostora:</span>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur.
+          </p>
+        </div>
+      </div>
+      <div class="info-div-2">
+        <span class="bold">
+          Želimo vam prijatan i kvalitetan boravak u našim prostorima
+        </span>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -218,57 +248,41 @@
           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
           pariatur.
         </p>
-        <span class="bold">Otkazivanje prostora:</span>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur.
-        </p>
       </div>
-    </div>
-    <div class="info-div-2">
-      <span class="bold">
-        Želimo vam prijatnan i kvalitetan boravak u našim prostorima
-      </span>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur.
-      </p>
-    </div>
-    <div class="footer">
-      <div class="footer-logo">
-        <img src="images/di.png" alt="di" height="36px" width="36px" />
-        <br />
-        <span class="bold">digital<br />infinity.</span>
-      </div>
-      <div class="company-info">
-        <h4 class="info-header">Informacije o kompaniji</h4>
-        <div class="info-section">
-          <span class="bold">DIGITAL INFINITY DOO Novi Sad</span><br />
-          <span>Bulevar Kralja Petra I 89, 21000 Novi Sad</span>
+      <div class="footer">
+        <div class="footer-logo">
+          <img
+            src="https://cdn.filestackcontent.com/cache=false/output=secure:true/security=policy:eyJleHBpcnkiOiAxNTg1OTE2NDgzLCAiY2FsbCI6IFsicmVhZCIsICJzdGF0IiwgImNvbnZlcnQiLCAicGljayIsICJzdG9yZSJdfQ==,signature:a394f586db6c3c24b74300fe051077c4aa6000543f23c7f08ab7de438504a61a/j7RpTh5bRbW6GxNpxVi7"
+            alt="di"
+            height="36px"
+            width="36px"
+          />
+          <br />
+          <span class="bold">digital<br />infinity.</span>
         </div>
-        <div class="info-section">
-          <span>PIB: 110217311</span><br />
-          <span>Matični broj: 21318507</span>
+        <div class="company-info">
+          <h4 class="info-header">Informacije o kompaniji</h4>
+          <div class="info-section">
+            <span class="bold">DIGITAL INFINITY DOO Novi Sad</span><br />
+            <span>Bulevar Kralja Petra I 89, 21000 Novi Sad</span>
+          </div>
+          <div class="info-section">
+            <span>PIB: 110217311</span><br />
+            <span>Matični broj: 21318507</span>
+          </div>
+          <div class="info-section">
+            <span>Tel: +381 21 300 2956</span><br />
+            <span>Email: office@digitalinfinity.rs</span>
+          </div>
+          <div class="info-section">
+            <span>digitalinfinity.rs</span>
+          </div>
         </div>
-        <div class="info-section">
-          <span>Tel: +381 21 300 2956</span><br />
-          <span>Email: office@digitalinfinity.rs</span>
+        <div class="social">
+          <span class="social-text bold"
+            >Prati nas - Fb. / In. / Tw. / Inst.</span
+          >
         </div>
-        <div class="info-section">
-          <span>digitalinfinity.rs</span>
-        </div>
-      </div>
-      <div class="social">
-        <span class="social-text bold"
-          >Prati nas - Fb. / In. / Tw. / Inst.</span
-        >
       </div>
     </div>
   </body>
