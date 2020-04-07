@@ -1,6 +1,6 @@
-const express = require('express');
-const ConferenceRoom = require('../models/ConferenceRoom')
-const Time = require('../models/Time')
+const express = require("express");
+const ConferenceRoom = require("../models/ConferenceRoom");
+const Time = require("../models/Time");
 
 const router = express.Router();
 const nodemailer = require("nodemailer");
@@ -27,38 +27,6 @@ router.post('/reserve', async (req, res) => {
     let month = reservation.date_from.getMonth()
     let day = reservation.date_from.getDay()
     timeToReserve = (reservation.time_to.getHours() - reservation.time_from.getHours()) + 1
-
-    for(i=reservation.time_from.getHours()-1; i<(reservation.time_from.getHours()-1) +timeToReserve; i++){
-        test.push(i)
-    }
-    const times = await Time.find({},(err,result) => {
-        if(reservation.date_from.getTime() === reservation.date_to.getTime()){
-            result[0].years[month].month.value[day].value.forEach(item => {
-                test.forEach(h => {
-                    if(h === item.hour) {
-                        // Time.updateMany({},{$set:{"years[0].month.value[month].value[day]": 1001}})
-                        result[0].years[month].month.value[day].value[h].hour = 1001
-                    }
-                }) 
-            }) 
-            result[0].save()
-        }else {
-            let i = reservation.date_from.getMonth();
-            while (i <= reservation.date_to.getMonth() ) {
-                result[0].years[i].month.value.forEach(day => {
-                    day.value.forEach(item => {
-                        test.forEach(h => {
-                            if(h === item.hour) {
-                                item.hour = 1001
-                            }
-                        }) 
-                    })
-                }) 
-                i++
-            }
-            result[0].save()
-        }
-    })
     const savedReservation = await reservation.save();
 
     let transporter = nodemailer.createTransport({
