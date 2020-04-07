@@ -1,20 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParse = require('body-parser');
-const crypto = require('crypto');
-const multer = require('multer');
-const GridFsStorage = require('multer-gridfs-storage');
 const GridFsStream = require('gridfs-stream');
-const methodsOverride = require('method-override');
 const path = require('path');
+const cors = require('cors');
 
 require('dotenv/config');
 
 const app = express();
 app.use(bodyParse.json());
 app.use(express.static('public'));
-
-let gfs;
+app.use(cors());
 
 const empoyeeRoutes = require('./routes/employees');
 const jobRoutes = require('./routes/jobs');
@@ -72,4 +68,6 @@ app.get('/add-position', (req, res) => {
 app.get('/edit-position/:id', (req, res) => {
   res.sendFile(path.join(__dirname + '/views/add_edit_position.html'));
 });
-app.listen(8000);
+app.listen('8000', (req,res) => {
+  console.log("Server started")
+});

@@ -4,14 +4,21 @@ const Job = require('../models/Job');
 const router = express.Router();
 
 router.get('/all-job-positions', async (req, res) => {
-  const jobs = await Job.find();
-  res.json(jobs);
+  try {
+    const jobs = await Job.find();
+    res.json(jobs);
+  }catch(err){
+    res.status(404).json(err)
+  }
 });
 
 router.get('/:id', async (req, res) => {
-  const job = await Job.findById(req.params.id);
-
-  res.json(job);
+  try{
+    const job = await Job.findById(req.params.id);
+    res.json(job);
+  }catch(err){
+    res.status(404).json(err)
+  }
 });
 
 router.put('/:id', (req, res) => {

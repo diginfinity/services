@@ -8,8 +8,12 @@ const path = require('path');
 const router = express.Router();
 
 router.get('/all-employees', async (req, res) => {
-  const employees = await Employee.find();
-  res.json(employees);
+  try{
+    const employees = await Employee.find();
+    res.json(employees);
+  }catch(err){
+    res.status(404).json(err)
+  }
 });
 
 router.get('/:id', async (req, res) => {
